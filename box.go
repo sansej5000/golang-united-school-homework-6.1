@@ -1,5 +1,6 @@
 package golang_united_school_homework
 
+import "fmt"
 
 // box contains list of shapes and able to perform operations on them
 type box struct {
@@ -17,7 +18,7 @@ func NewBox(shapesCapacity int) *box {
 // AddShape adds shape to the box
 // returns the error in case it goes out of the shapesCapacity range.
 func (b *box) AddShape(shape Shape) error {
-	if (len(b.shapes) < b.shapesCapacity){
+	if len(b.shapes) < b.shapesCapacity {
 		b.shapes = append(b.shapes, shape)
 	}
 	return fmt.Errorf("quantity cannot be exceeded, current value: %d", len(b.shapes))
