@@ -1,6 +1,9 @@
 package golang_united_school_homework
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 // box contains list of shapes and able to perform operations on them
 type box struct {
