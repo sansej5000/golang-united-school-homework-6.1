@@ -23,6 +23,7 @@ func NewBox(shapesCapacity int) *box {
 func (b *box) AddShape(shape Shape) error {
 	if len(b.shapes) < b.shapesCapacity {
 		b.shapes = append(b.shapes, shape)
+		return nil
 	}
 	return fmt.Errorf("quantity cannot be exceeded, current value: %d", len(b.shapes))
 }
