@@ -2,7 +2,6 @@ package golang_united_school_homework
 
 import (
 	"fmt"
-	"reflect"
 )
 
 const InvalidIndex string = "figure at index does not exist or index is out of range"
@@ -87,18 +86,17 @@ func (b *box) SumArea() float64 {
 // RemoveAllCircles removes all circles in the list
 // whether circles are not exist in the list, then returns an error
 func (b *box) RemoveAllCircles() error {
-	counter := 0
-	lenght := len(b.shapes)
-	for i := 0; i < lenght; i++ {
-		_, ok := reflect.ValueOf(b.shapes[i-counter]).Interface().(Circle)
-		if ok {
-			b.shapes = append(b.shapes[:i-counter], b.shapes[i-counter+1:]...)
-			counter += 1
+	noCircle := []Shape{}
+	for _, shape := range b.shapes {
+		_, ok := shape.(*Circle)
+		if !ok {
+			noCircle = append(noCircle, shape)
 		}
 	}
-	if counter == 0 {
+	if len(noCircle) == len(b.shapes) {
 		return fmt.Errorf("there are no circles in the list")
 	}
+	b.shapes = noCircle
 	return nil
 
 }

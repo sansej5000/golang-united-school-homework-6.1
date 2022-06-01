@@ -131,9 +131,11 @@ func TestRemoveAllCirclesNoCircles(t *testing.T) {
 	}
 }
 func TestRemoveAllCirclesInvalidDel(t *testing.T) {
-	box := NewBox(2)
-	box.AddShape(Circle{Radius: 2})
-	box.AddShape(Rectangle{Height: 3, Weight: 4})
+	box := NewBox(4)
+	box.AddShape(&Triangle{Side: 3})
+	box.AddShape(&Circle{Radius: 2})
+	box.AddShape(&Rectangle{Height: 3, Weight: 4})
+	box.AddShape(&Circle{Radius: 2})
 	ok := box.RemoveAllCircles()
 	if ok != nil {
 		t.Errorf("Return value is not correct. Expected value: nil")
