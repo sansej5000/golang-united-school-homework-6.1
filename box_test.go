@@ -77,9 +77,9 @@ func TestReplaceByIndexInvalidIndex(t *testing.T) {
 	box := NewBox(2)
 	box.AddShape(Circle{Radius: 1})
 	box.AddShape(Rectangle{Height: 3, Weight: 4})
-	_, ok := box.ReplaceByIndex(2, Circle{Radius: 1})
+	_, ok := box.ReplaceByIndex(3, Circle{Radius: 1})
 	if ok == nil {
-		t.Errorf("Index out of range. Сurrent range: 2")
+		t.Errorf("Index out of range. Сurrent range: 3")
 	}
 }
 func TestReplaceByIndexReturnItem(t *testing.T) {

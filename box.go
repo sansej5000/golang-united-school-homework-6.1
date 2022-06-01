@@ -5,6 +5,8 @@ import (
 	"reflect"
 )
 
+const InvalidIndex string = "figure at index does not exist or index is out of range"
+
 // box contains list of shapes and able to perform operations on them
 type box struct {
 	shapes         []Shape
@@ -32,7 +34,7 @@ func (b *box) AddShape(shape Shape) error {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
 	if i < 0 || i >= len(b.shapes) {
-		return nil, fmt.Errorf("figure at index does not exist or index is out of range")
+		return nil, fmt.Errorf(InvalidIndex)
 	}
 	return b.shapes[i], nil
 
@@ -42,7 +44,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 	if i < 0 || i >= len(b.shapes) {
-		return nil, fmt.Errorf("figure at index does not exist or index is out of range")
+		return nil, fmt.Errorf(InvalidIndex)
 	}
 	res := b.shapes[i]
 	b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
