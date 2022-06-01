@@ -94,7 +94,7 @@ func (b *box) RemoveAllCircles() error {
 			counter += 1
 		}
 	}
-	if lenght == len(b.shapes) {
+	if counter == 0 {
 		return fmt.Errorf("there are no circles in the list")
 	}
 	return nil
